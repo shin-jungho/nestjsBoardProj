@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Board, BoardStatus } from './boards.model';
 import { v1 as uuid } from 'uuid';
 import { CreateBoardDto } from './dto/create-board.dto';
@@ -26,12 +26,18 @@ export class BoardsService {
   }
 
   getBoardById(id: string): Board {
-    return this.boards.find((board) => board.id === id);
+    const found = this.boards.find((board) => board.id === id);
+    // 찾는 아이디가 없을때 if문에 NotFoundException으로 없다고 알려줌
+    if(!found) {
+      throw new NotFoundException(`Can't find id ${id}` );
+    }
+    return found;
   }
 
   // 아이디가 다른것을 필터링하고 아이디가 같은것만 지우도록하는 delete 함수
   deleteBoard(id: string): void {
-    this.boards = this.boards.filter((boards) => boards.id !== id);
+    const found = this.getBoardById(id);
+    this.boards = this.boards.filter((boards) => boards.id !== found.id);
   }
   // status는 private인지 public 인지 알기 위해서 사용
   // 업데이트 하고싶은 게시물 아이디를 id에 넣어주면 업데이트 하고자하는 정보를 board에 넣고 

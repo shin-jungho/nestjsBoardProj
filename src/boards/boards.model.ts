@@ -1,5 +1,5 @@
 interface Board {
-  id?: string;
+  id: string;
   title: string;
   description: string;
   status: BoardStatus;
