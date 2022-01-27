@@ -2,7 +2,7 @@
 import { ArgumentMetadata, BadRequestException, PipeTransform } from '@nestjs/common';
 import { BoardStatus } from '../boards.model';
 
-// status는 public, private만 올 수 있기 때문에 이외의 값이오면 에러호출
+// status는 public, private만 올 수 있기 때문에 이외의 값이오면 에러호출 함수
 export class BoardStatusValidationPipe implements PipeTransform {
   readonly StatusOptions = [
     BoardStatus.PRIVATE,
