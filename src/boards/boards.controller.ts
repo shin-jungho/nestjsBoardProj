@@ -4,15 +4,22 @@ import { BoardStatus } from './boards-status.enum';
 import { BoardsService } from './boards.service';
 import { CreateBoardDto } from './dto/create-board.dto';
 import { BoardStatusValidationPipe } from './pipes/board-status-validation.pipe';
+import { Board } from './board.entity'; // 
 
 @Controller('boards')
 export class BoardsController {
-  // constructor(private boardsService: BoardsService) {}
+  constructor(private boardsService: BoardsService) {}
 
   // @Get('/')
   // getAllBoard(): Board[] {
   //   return this.boardsService.getAllBoards();
   // }
+
+  @Post()
+  @UsePipes(ValidationPipe)
+  createBoard(@Body() createBoardDto: CreateBoardDto): Promise<Board> {
+    return this.boardsService.createBoard(createBoardDto);
+  }
 
   // @Post()
   // @UsePipes(ValidationPipe) // controller hander에 만들어서 유효성 체크
@@ -21,6 +28,12 @@ export class BoardsController {
   //   ): Board {
   //   return this.boardsService.createBoard(createBoardDto);
   // }
+
+    @Get('/:id')
+    getBoardById(@Param('id') id: number): Promise<Board> {
+      return this.boardsService.getBoardById(id);
+    }
+
   // // 고유한 id로 게시물 가져오는 것으로 @body가 아니라 @param으로 함
   // @Get('/:id')
   // getBoardById(@Param('id') id: string): Board{

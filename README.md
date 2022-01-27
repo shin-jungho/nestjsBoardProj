@@ -62,3 +62,8 @@ Nest is [MIT licensed](LICENSE).
 ## Remember
 ### validation check github repo
 <a href="https://github.com/typestack/class-validator#manual-validation"></a>
+
+### Error
+- EntityMetadataNotFoundError
+1. typeORM.config파일 오타 확인!
+2. entities라는 옵션을 제대로 명시했는지 확인!

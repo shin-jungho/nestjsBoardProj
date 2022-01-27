@@ -1,13 +1,13 @@
 /* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { BoardREpository } from './board.repository';
+import { BoardRepository } from './board.repository';
 import { BoardsController } from './boards.controller';
 import { BoardsService } from './boards.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([BoardREpository])
+    TypeOrmModule.forFeature([BoardRepository])
   ],
   controllers: [BoardsController],
   providers: [BoardsService],
