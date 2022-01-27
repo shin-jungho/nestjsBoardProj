@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, Patch } from '@nestjs/common';
 import { BoardStatus } from './boards-status.enum';
 import { v1 as uuid } from 'uuid';
 import { CreateBoardDto } from './dto/create-board.dto';
@@ -14,22 +14,16 @@ export class BoardsService {
     private boardRepository: BoardRepository,
   ) {}
 
+  async getAllBoards(): Promise<Board[]> {
+    return await this.boardRepository.find();
+  }
   // private boards: Board[] = []; // 로컬 메모리이므로 실제 데이터랑 연동하기 위해 주석처리
   // getAllBoards(): Board[] {
   //   return this.boards;
   // }
 
-  async createBoard(createBoardDto: CreateBoardDto): Promise<Board> {
-    const { title, description } = createBoardDto;
-
-    const board = this.boardRepository.create({ //await??
-      title,
-      description,
-      status: BoardStatus.PUBLIC,
-    })
-
-    await this.boardRepository.save(board);
-    return board;
+  createBoard(createBoardDto: CreateBoardDto): Promise<Board> {
+    return this.boardRepository.createBoard(createBoardDto);
   }
     
   // createBoard(createBoardDto: CreateBoardDto) {
@@ -63,16 +57,27 @@ export class BoardsService {
   //   return found;
   // }
 
-    // async deleteBoard(id: number): void {
-    //   const found = this.getBoardById(id);
-    //   this.boardRepository = this.boardRepository.()
-    // }
+    async deleteBoard(id: number): Promise<void> {
+      const result = await this.boardRepository.delete(id);
+
+      if(result.affected === 0) {
+        throw new NotFoundException(`can't find id${id}`);
+      }
+      console.log('result:', result);
+      
+    }
   // // 아이디가 다른것을 필터링하고 아이디가 같은것만 지우도록하는 delete 함수
   // deleteBoard(id: string): void {
   //   const found = this.getBoardById(id);
   //   this.boards = this.boards.filter((boards) => boards.id !== found.id);
   // }
 
+  async updateBoardStatus(id: number, status: BoardStatus): Promise<Board> {
+    const board = await this.getBoardById(id);
+    board.status = status
+    await this.boardRepository.save(board);
+    return board;
+  }
     
   // // status는 private인지 public 인지 알기 위해서 사용
   // // 업데이트 하고싶은 게시물 아이디를 id에 넣어주면 업데이트 하고자하는 정보를 board에 넣고 
