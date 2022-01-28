@@ -58,10 +58,12 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
-
+---
 ## Remember
 ### validation check github repo
 1. <a href="https://github.com/typestack/class-validator#manual-validation">class-validation 정리</a>
+
+### TypeORM docs 메소드 정리
 2. <a href="https://typeorm.io/#/repository-api">TypeORM docs 메소드 정리</a> 
 
 ### Error
@@ -70,4 +72,4 @@ Nest is [MIT licensed](LICENSE).
 2. entities라는 옵션을 제대로 명시했는지 확인!
 
 - error code 
-23505: 중복된 키값이 있다는 뜻
+23505: 중복된 키값이 있다는 오류코드
