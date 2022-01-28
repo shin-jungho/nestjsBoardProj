@@ -73,3 +73,8 @@ Nest is [MIT licensed](LICENSE).
 
 - error code 
 23505: 중복된 키값이 있다는 오류코드
+
+### 어려운 파트
+- passport, jwt 이용해서 토큰 인증 후 유저 정보 가져오는 것
+### 헷갈렸던 것
+- injectable vs export ?
