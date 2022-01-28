@@ -68,3 +68,6 @@ Nest is [MIT licensed](LICENSE).
 - EntityMetadataNotFoundError
 1. typeORM.config파일 오타 확인!
 2. entities라는 옵션을 제대로 명시했는지 확인!
+
+- error code 
+23505: 중복된 키값이 있다는 뜻
