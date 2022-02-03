@@ -18,5 +18,5 @@ export class Board extends BaseEntity {
   status: BoardStatus;
 
   @ManyToOne(type => User, user => user.boards, { eager: false })
-  user: User[]
+  user: User;
 }
