@@ -66,6 +66,10 @@ Nest is [MIT licensed](LICENSE).
 ### TypeORM docs 메소드 정리
 2. <a href="https://typeorm.io/#/repository-api">TypeORM docs 메소드 정리</a> 
 
+3. getMany(), getOne()
+  - getMany(): 여러 개의 결과를 가져옴
+  - getOne(): 하나의 결과를 가져옴
+
 ### Error
 - EntityMetadataNotFoundError
   1. typeORM.config파일 오타 확인!
