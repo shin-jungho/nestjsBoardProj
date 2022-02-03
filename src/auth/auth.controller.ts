@@ -1,8 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { Body, Controller, Post, Req, UseGuards, ValidationPipe } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { User } from './user.entity';
 import { AuthService } from './auth.service';
 import { authCredentialDto } from './dto/authCredential.dto';
+import { getUser } from './get-user.decorator';
 
 @Controller('auth')
 export class AuthController {
@@ -23,8 +25,8 @@ export class AuthController {
     
     @Post('/test')
     @UseGuards(AuthGuard()) 
-    test(@Req() req) {
-      console.log('req', req);
+    test(@getUser() user: User) {
+      console.log('user', User);
       
     }
   }
