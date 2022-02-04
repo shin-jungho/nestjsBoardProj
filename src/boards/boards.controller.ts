@@ -22,10 +22,7 @@ export class BoardsController {
     this.logger.verbose(`User ${user.username} trying to get all boards`);
     return this.boardsService.getAllBoards(user);
   }
-  // @Get('/')
-  // getAllBoard(): Board[] {
-  //   return this.boardsService.getAllBoards();
-  // }
+
 
   @Post()
   @UsePipes(ValidationPipe)
@@ -35,25 +32,11 @@ export class BoardsController {
     Payload: ${JSON.stringify(createBoardDto)}`)
     return this.boardsService.createBoard(createBoardDto, user);
   }
-
-  // @Post()
-  // @UsePipes(ValidationPipe) // controller hander에 만들어서 유효성 체크
-  // createBoard(
-  //   @Body() createBoardDto: CreateBoardDto
-  //   ): Board {
-  //   return this.boardsService.createBoard(createBoardDto);
-  // }
-
+  
     @Get('/:id')
     getBoardById(@Param('id') id: number): Promise<Board> {
       return this.boardsService.getBoardById(id);
     }
-
-  // // 고유한 id로 게시물 가져오는 것으로 @body가 아니라 @param으로 함
-  // @Get('/:id')
-  // getBoardById(@Param('id') id: string): Board{
-  //   return this.boardsService.getBoardById(id);
-  // }
 
     @Delete('/:id')
     deleteBoard(@Param('id', ParseIntPipe) id,
@@ -61,11 +44,6 @@ export class BoardsController {
     ): Promise<void> {
       return this.boardsService.deleteBoard(id, user);
     }
-
-  // @Delete('/:id')
-  // deleteBoard(@Param('id') id: string): void {
-  //   this.boardsService.deleteBoard(id);
-  // }
 
     @Patch('/:id/status')
     updateBoardStatus(
@@ -75,11 +53,34 @@ export class BoardsController {
       return this.boardsService.updateBoardStatus(id, status);
     }
 
-  // @Patch('/:id/status')
-  // updateBoardStatus(
-  //   @Param('id') id: string,
-  //   @Body('status', BoardStatusValidationPipe) status: BoardStatus
-  //   ) {
-  //     return this.boardsService.updateBoardStatus(id, status);
-  //   }
+
 }
+
+// 로컬 스토리지 사용시 만든 router
+// @Get('/')
+// getAllBoard(): Board[] {
+//   return this.boardsService.getAllBoards();
+// }
+// @Post()
+// @UsePipes(ValidationPipe) // controller handler에 만들어서 유효성 체크
+// createBoard(
+//   @Body() createBoardDto: CreateBoardDto
+//   ): Board {
+//   return this.boardsService.createBoard(createBoardDto);
+// }
+// 고유한 id로 게시물 가져오는 것으로 @body가 아니라 @param으로 함
+// @Get('/:id')
+// getBoardById(@Param('id') id: string): Board{
+//   return this.boardsService.getBoardById(id);
+// }
+// @Delete('/:id')
+// deleteBoard(@Param('id') id: string): void {
+//   this.boardsService.deleteBoard(id);
+// }
+// @Patch('/:id/status')
+// updateBoardStatus(
+//   @Param('id') id: string,
+//   @Body('status', BoardStatusValidationPipe) status: BoardStatus
+//   ) {
+//     return this.boardsService.updateBoardStatus(id, status);
+//   }

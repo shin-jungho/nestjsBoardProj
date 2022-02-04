@@ -9,11 +9,7 @@ import * as bcrypt from 'bcryptjs';
 export class userRepository extends Repository<User> {
   async createUser(authCredentialDto: authCredentialDto): Promise<void> {
     const { username, password } = authCredentialDto;
-    
-    // 위 코드와 같은 것
-    // const user = new User();
-    // user.username = username;
-    // user.password = password;
+  
     
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);

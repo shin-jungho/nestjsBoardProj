@@ -59,16 +59,12 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](LICENSE).
 ---
-## Remember
+## Method 정리 링크
 ### validation check github repo
 1. <a href="https://github.com/typestack/class-validator#manual-validation">class-validation 정리</a>
 
 ### TypeORM docs 메소드 정리
 2. <a href="https://typeorm.io/#/repository-api">TypeORM docs 메소드 정리</a> 
-
-3. getMany(), getOne()
-  - getMany(): 여러 개의 결과를 가져옴
-  - getOne(): 하나의 결과를 가져옴
 
 ### Error
 - EntityMetadataNotFoundError
@@ -107,5 +103,18 @@ Nest is [MIT licensed](LICENSE).
   - ex) `default.yml, development.yml, production.yml`안에 server, db source, jwt, synchronize을 넣어 관리
 
 - TypeORM (PostgresSQL): TS로 작성된 객체 관계형 라이브러리
-### 헷갈렸던 것
-- injectable vs export ?
+### 헷갈렸던 것, 알아야될 것
+- injectable 있는데 export를 쓰는 이유?
+  - 우선 @Injectable()은 provider의 클래스 중 하나
+  - nestjs에는 루트 모듈이 있다. 이 루트 모듈은 nest가 모듈 및 provider relationship 및 dependencies를 해결하는 데 사용하는 내부 데이터 구조를 구축하는 시발점
+  
+- `providers`: injectable 데코레이터로 인해 인스턴스화 되고, 최소 현재 모듈에서 공유될 provide의 집합
+- `controllers`: 인스턴스화해야하는 현재 모듈에 정의된 controller의 집합
+- `imports`: 현재 모듈에서 필요한 provider들을 export한 import된 모듈의 집합
+- `exports`: 현재 모듈에 의해 제공 그리고 import하는 다른 모듈에서 사용할 수 있어야 하는 <p>provider의 하위 집합</p>
+
+따라서 기본적으로 모듈은 provider를 캡슐화하며 현재 모듈의 `provider`에 등록되지 않고 `import`한 모듈에서 `export`하지 않은 `provider`를 inject하는 것은 불가능함.
+----
+- getMany(), getOne()
+  - getMany(): 여러 개의 결과를 가져옴
+  - getOne(): 하나의 결과를 가져옴

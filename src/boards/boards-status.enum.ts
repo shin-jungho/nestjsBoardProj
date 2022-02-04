@@ -1,6 +1,6 @@
 enum BoardStatus {
   PUBLIC = 'PUBLIC',
-  PRIVATE = 'PRIVATE',
+  PRIVATE = 'PRIVATE'
 }
 
 export { BoardStatus };

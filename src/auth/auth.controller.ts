@@ -14,12 +14,12 @@ export class AuthController {
 
     // localhost:3000/auth/signup
   @Post('/signup')
-    signUp(@Body() authCredentialDto: authCredentialDto): Promise<void> {
+    signUp(@Body(ValidationPipe) authCredentialDto: authCredentialDto): Promise<void> {
       return this.authService.signUp(authCredentialDto);
     }
 
   @Post('/signin')
-    signIn(@Body(ValidationPipe) authCredentialDto: authCredentialDto): Promise<{ accessToken }> {
+    signIn(@Body() authCredentialDto: authCredentialDto): Promise<{ accessToken: string }> {
       return this.authService.signIn(authCredentialDto);
     }
     
