@@ -77,6 +77,10 @@ Nest is [MIT licensed](LICENSE).
 - user, board entity에서 import할 때 자동 import안되서 오류난거!
   - import 확인 항상할 것
 
+- postman에서 signin 할 때 
+  - 상위 config 폴더 안에 default.yml에서 expiresIn 값 3600이라고 적는게 아니라 "1d", "20h" 처럼 string 으로 줘야한다.
+  <a hre="https://www.npmjs.com/package/jsonwebtoken">npm jwt 공식문서</a>
+
 ### 사용한 것들
 - CLI를 사용해 Nestjs의 모듈, 컨트롤러, 서비스 생성
 
@@ -107,7 +111,7 @@ Nest is [MIT licensed](LICENSE).
 - injectable 있는데 export를 쓰는 이유?
   - 우선 @Injectable()은 provider의 클래스 중 하나
   - nestjs에는 루트 모듈이 있다. 이 루트 모듈은 nest가 모듈 및 provider relationship 및 dependencies를 해결하는 데 사용하는 내부 데이터 구조를 구축하는 시발점
-  
+
 - `providers`: injectable 데코레이터로 인해 인스턴스화 되고, 최소 현재 모듈에서 공유될 provide의 집합
 - `controllers`: 인스턴스화해야하는 현재 모듈에 정의된 controller의 집합
 - `imports`: 현재 모듈에서 필요한 provider들을 export한 import된 모듈의 집합

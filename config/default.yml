@@ -7,4 +7,4 @@ db:
   database: 'Board-app'
 
 jwt:
-  expriesIn: 3600
+  expiresIn: "20h"

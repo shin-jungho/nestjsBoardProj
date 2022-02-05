@@ -23,7 +23,7 @@ export class AuthService {
 
     if(user && (await bcrypt.compare(password, user.password))) {
       // 유저 토큰 생성 (secret, payload(중요한 정보는 넣지 말기) 필요)
-      const payload = { username }
+      const payload = { username };
       const accessToken = await this.jwtService.sign(payload);
       return { accessToken };
     } else {
