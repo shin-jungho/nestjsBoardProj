@@ -78,7 +78,7 @@ Nest is [MIT licensed](LICENSE).
   - import 확인 항상할 것
 
 - postman에서 signin 할 때 
-  - 상위 config 폴더 안에 default.yml에서 expiresIn 값 3600이라고 적는게 아니라 "1d", "20h" 처럼 string 으로 줘야한다.
+  - 상위 config 폴더 안에 default.yml에서 expiresIn 값 3600이라고 적는게 아니라 "1d", "20h" 처럼 string 으로 줘야한다.<br>
   <a href="https://www.npmjs.com/package/jsonwebtoken">npm jwt 공식문서</a>
 
 ### 사용한 것들
