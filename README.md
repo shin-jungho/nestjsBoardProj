@@ -73,6 +73,7 @@ Nest is [MIT licensed](LICENSE).
 
 - error code 
 23505: 중복된 키값이 있다는 오류코드
+  - 23505 오류 코드로 user.repository에서 유저 중복 가려냄
 
 - user, board entity에서 import할 때 자동 import안되서 오류난거!
   - import 확인 항상할 것
