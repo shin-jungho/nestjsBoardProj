@@ -117,6 +117,7 @@ Nest is [MIT licensed](LICENSE).
 - `controllers`: 인스턴스화해야하는 현재 모듈에 정의된 controller의 집합
 - `imports`: 현재 모듈에서 필요한 provider들을 export한 import된 모듈의 집합
 - `exports`: 현재 모듈에 의해 제공 그리고 import하는 다른 모듈에서 사용할 수 있어야 하는 provider의 하위 집합<br>
+<br>
 따라서 기본적으로 모듈은 `provider`를 캡슐화하며 현재 모듈의 `provider`에 등록되지 않고 `import`한 모듈에서 `export`하지 않은 `provider`를 inject하는 것은 불가능함.
 - getMany(), getOne()
   - getMany(): 여러 개의 결과를 가져옴
